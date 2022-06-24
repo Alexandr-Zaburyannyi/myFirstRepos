@@ -1,0 +1,91 @@
+body{
+    display: flex;
+   flex-direction: column;
+    align-items: center;
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 40px;
+    align-items: center;
+    padding: 40px;
+}
+.title{
+ margin-right: 30px;
+}
+.add {
+    height: 40px;
+    width: 70px;
+}
+
+.table{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    width: 700px;
+}
+.table__row {
+ border-top: 1px solid black;
+ width: 700px;
+
+}
+.table__row__title {
+   font-weight: 1000;
+   
+}
+.table__row__title,.table__row__content {
+    padding: 10px;
+}
+.edit ,.remove, .add{
+    border: 0;
+    background-color: lightblue;
+    border-radius: 15px;
+    color: black;
+}
+ 
+.edit:hover, .remove:hover, .add:hover{
+    background-color: #5ec0e0;
+}
+
+
+.info-type-container{
+    margin-right: 10px;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
+.info-type, .info{
+    display: block;
+    margin-bottom: 10px;
+}
+.info{
+    height: 23px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+.button{
+  padding-left: 20px;
+  padding-top: 105px;
+}
+.submit{
+    height: 50px;
+    width: 60px;
+    border: none;
+    border-radius: 15px;
+    background-color: lightblue;
+    color: black;
+}
+.submit:hover{
+    background-color: #5ec0e0;
+}
+.container{
+    display: flex;
+    margin: 40px 0;
+}
+._invisible {
+    display: none;
+}
