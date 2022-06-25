@@ -12,13 +12,13 @@ let submitButton = document.querySelector('.submit');
 
 let table = document.querySelector('.table');
 
-let tableRowContainers = document.querySelectorAll('.table__row__content')
+let tableRowContainers = document.querySelectorAll('.table__row__content');
 
 let inputs = document.querySelectorAll('.info');
 
 let number = document.querySelectorAll('.number');
 
-let Length = rows.length;
+let rowsLength = rows.length;
 
 
 addButton.addEventListener('click',() => {
@@ -34,7 +34,7 @@ submitButton.addEventListener('click',() =>{
    
 table.insertAdjacentHTML('beforeend',
 `<tr class="table__row">
-<td class="table__row__content">${Length}</td>
+<td class="table__row__content">${rows.length++}</td>
 <td class="table__row__content">${document.querySelector(".name").value}</td>
 <td class="table__row__content">${document.querySelector(".surname").value}</td>
 <td class="table__row__content">${document.querySelector(".email").value}</td>
@@ -44,7 +44,7 @@ table.insertAdjacentHTML('beforeend',
 <td class="table__row__content"><button class="remove">Remove</button></td>
 </tr>
 `);
-Length = Length + 1;
+
 
 container.classList.toggle('_invisible');
 })
@@ -57,13 +57,7 @@ removeButtons.forEach(removeButton => {
             if(event.target === removeButtons[i]) {
                 rows[i + 1].classList.add('_invisible');
             } 
-            
-            
-            
         }
-        
-        
-        
     })
 })
 
@@ -71,16 +65,23 @@ editButtons.forEach(function(editButton) {
     
     editButton.addEventListener('click', function(){
         container.classList.toggle('_invisible');
-       for(let i=0; i < inputs.length; i++) {
-        if(event.currentTarget === editButtons[i]) {
-            inputs[i].value= tableRowContainers[i + 1].innerHTML;
-           
+       for(let i=0; i < editButtons.length; i++) {
+        
+        if(event.target === editButtons[i]) {
+            
+            let attr = editButtons[i].getAttribute("data-id");
+            for(let j=0; j < inputs.length; j++) {
+                let temp = document.querySelector(`.table__row[data-id="${attr}"]`);
+                inputs[j].value = temp.children[j + 1].innerHTML;
+            }
+
+          
         }
         
        }
        
         submitButton.addEventListener('click',() =>{
-                tableRowContainers[i + 1].innerHTML = cache;
+       //         tableRowContainers[i + 1].innerHTML = cache;
             });
     })
 });
