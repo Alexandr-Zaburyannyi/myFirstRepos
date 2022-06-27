@@ -8,7 +8,9 @@ let addButton = document.querySelector('.add');
 
 let container = document.querySelector('.container');
 
-let submitButton = document.querySelector('.submit');
+let firstSubmitButton = document.querySelector('.submit1');
+
+let secondSubmitButton = document.querySelector('.submit2');
 
 let table = document.querySelector('.table');
 
@@ -23,6 +25,8 @@ let rowsLength = rows.length;
 
 addButton.addEventListener('click',() => {
     container.classList.toggle('_invisible');
+    secondSubmitButton.classList.add('_invisible');
+    firstSubmitButton.classList.remove('_invisible');
     inputs.forEach(input => {
         input.value = '';
     })
@@ -30,7 +34,7 @@ addButton.addEventListener('click',() => {
 
 
 
-submitButton.addEventListener('click',() =>{
+firstSubmitButton.addEventListener('click',() =>{
    
 table.insertAdjacentHTML('beforeend',
 `<tr class="table__row" data-id="${rowsLength}">
@@ -47,6 +51,7 @@ table.insertAdjacentHTML('beforeend',
 rowsLength++;
 
 container.classList.toggle('_invisible');
+
 })
 
 
@@ -66,8 +71,14 @@ container.classList.toggle('_invisible');
     table.addEventListener('click', function(){
         editButtons.forEach(editButton => {
             if (event.target === editButton){
-                let temp = editButton.parentElement.parentElement.innerText;
-             
+                firstSubmitButton.classList.add('_invisible');
+                secondSubmitButton.classList.remove('_invisible');
+                let temp = editButton.parentElement.parentElement;
+                
+         let children =  temp.querySelectorAll('.table__row__content');
+         for(let i = 0; i < inputs.length; i++){
+           inputs[i].value= children[i + 1].innerText;
+         }
                
                 
                 
@@ -75,10 +86,13 @@ container.classList.toggle('_invisible');
             }
         })
         
-       
-        submitButton.addEventListener('click',() =>{
-       //         tableRowContainers[i + 1].innerHTML = cache;
-            });
+        
     })
-
+    
+    secondSubmitButton.addEventListener('click',() =>{
+        for(let i = 0; i < inputs.length; i++){
+        tableRowContainers[i + 1].innerText = inputs[i].value;
+          }
+          container.classList.toggle('_invisible');
+        });
 
