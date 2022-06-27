@@ -67,11 +67,11 @@ container.classList.toggle('_invisible');
         editButtons.forEach(editButton => {
             if (event.target === editButton){
                 let temp = editButton.parentElement.parentElement.innerText;
-                console.log(temp);
+             
+               
+                
+                
                 container.classList.toggle('_invisible');
-                inputs.forEach( input => {
-                    input = temp;
-                })
             }
         })
         
